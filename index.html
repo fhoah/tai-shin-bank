@@ -23,17 +23,27 @@
             max-width: 90%; /* 確保在小螢幕上仍適配 */
         }
         .loading {
+            width: 100%;
+            height: 10px;
+            background: #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
             margin: 20px 0;
-            width: 50px;
-            height: 50px;
-            border: 5px solid #ccc;
-            border-top-color: #d32f2f; /* 企業紅色 */
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
         }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        .loading::before {
+            content: "";
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background: #d32f2f;
+            border-radius: 5px;
+            animation: loadingBar 1.5s infinite ease-in-out;
+        }
+        @keyframes loadingBar {
+            0% { left: -50%; }
+            50% { left: 50%; }
+            100% { left: 100%; }
         }
         p {
             color: #333;
@@ -49,7 +59,7 @@
 <body>
 <div class="container">
     <img src="/logo.png" alt="台新銀行 Logo" class="logo">
-    <h2>台新銀行</h2>
+    <h2>台新國際商業銀行</h2>
     <div class="loading"></div>
     <p>目前登入人數過多，請稍後再試</p>
 </div>
